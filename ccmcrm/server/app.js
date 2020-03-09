@@ -1,6 +1,8 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var cors = require("cors");
+app.use(cors());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -12,15 +14,13 @@ let db = new sqlite3.Database("../ccmdb.db", err => {
   console.log("Connected to the cocomall database.");
 });
 
-app.get("/api/getorders", (req, res) => {
-  res.send("SELECT * FROM orders");
-  let sql = `SELECT * FROM orders`;
+app.get("/api/getorders/:page", (req, res) => {
+  let sql = `SELECT * FROM orders  LIMIT ${(req.params.page - 1) * 15} , ${15}`;
   db.all(sql, [], (err, row) => {
     if (err) {
       throw err;
     }
-    console.log(row);
-    return row;
+    res.send(row);
   });
 });
 

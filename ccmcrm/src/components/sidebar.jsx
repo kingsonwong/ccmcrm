@@ -28,23 +28,19 @@ class SideBar extends Component {
             </Link>
           </li>
           <li>
-            <FontAwesomeIcon
-              className="navlist_icon"
-              icon={faTable}
-              size="lg"
-            />
+            <FontAwesomeIcon className="navlist_icon" icon={faTable} />
             <Link className="navlist_link" to="/records">
               Records
             </Link>
           </li>
           <li>
-            <FontAwesomeIcon className="navlist_icon" icon={faPen} size="lg" />
+            <FontAwesomeIcon className="navlist_icon" icon={faPen} />
             <Link className="navlist_link" to="/form">
               Form
             </Link>
           </li>
           <li>
-            <FontAwesomeIcon className="navlist_icon" icon={faCog} size="lg" />
+            <FontAwesomeIcon className="navlist_icon" icon={faCog} />
             <Link className="navlist_link" to="/setting">
               Setting
             </Link>
