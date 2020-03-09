@@ -9,23 +9,31 @@ let db = new sqlite3.Database("../ccmdb.db", err => {
   console.log("Connected to the cocomall database.");
 });
 
-app.get("/api/getorders", function(req, res) {
+app.get("/api/getorders", (req, res) => {
+  res.send("SELECT * FROM orders");
+  let sql = `SELECT * FROM orders`;
+  db.all(sql, [], (err, row) => {
+    if (err) {
+      throw err;
+    }
+    console.log(row);
+    return row;
+  });
+});
+
+app.get("/api/getorder/:id", function(req, res) {
+  res.send(`SELECT * FROM orders WHERE order_id = ${req.params.id}`);
+});
+
+app.post("/api/postorder/:id", function(req, res) {
   res.send("SELECT * FROM orders");
 });
 
-app.get("/api/getorder:id", function(req, res) {
-  res.send("SELECT * FROM orders WHERE order_id = param_order_id");
-});
-
-app.post("/api/postorder:id", function(req, res) {
+app.post("/api/putorder/:id", function(req, res) {
   res.send("SELECT * FROM orders");
 });
 
-app.post("/api/putorder:id", function(req, res) {
-  res.send("SELECT * FROM orders");
-});
-
-app.post("/api/deleteorder:id", function(req, res) {
+app.post("/api/deleteorder/:id", function(req, res) {
   res.send("SELECT * FROM orders");
 });
 
