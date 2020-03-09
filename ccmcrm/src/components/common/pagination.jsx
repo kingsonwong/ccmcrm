@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import _ from "lodash";
 
 class Pagination extends Component {
   state = {};
   render() {
+    const { onPageChange, MaxPages } = this.props;
+    console.log(MaxPages);
+    let pages = _.range(1, MaxPages + 1);
+
     return (
       <nav aria-label="bottom_pagination_area">
         <ul class="pagination">
@@ -11,21 +16,15 @@ class Pagination extends Component {
               Previous
             </a>
           </li>
-          <li class="page-item page-item_middle">
-            <a class="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li class="page-item page-item_middle">
-            <a class="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li class="page-item page-item_middle">
-            <a class="page-link" href="#">
-              3
-            </a>
-          </li>
+          {pages.map(i => {
+            return (
+              <li class="page-item page-item_middle">
+                <a class="page-link" onClick={() => onPageChange(i)}>
+                  {i}
+                </a>
+              </li>
+            );
+          })}
           <li class="page-item page-item_right">
             <a class="page-link" href="#">
               Next

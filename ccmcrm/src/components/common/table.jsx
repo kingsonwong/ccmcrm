@@ -19,15 +19,17 @@ class Table extends Component {
           {orders.map(order => {
             return (
               <tr>
+                <td>{order.record_date}</td>
                 <td>{order.ccm_invoice_no}</td>
                 <td>{order.case_id}</td>
-                <td>{order.record_date}</td>
                 <td>{order.is_complete}</td>
                 <td>XXX</td>
                 <td>{order.cash_received_date}</td>
                 <td>{order.cash_paid_date}</td>
                 <td>{order.delivered_date}</td>
-                <FontAwesomeIcon className="print_icon" icon={faPrint} />
+                <td>
+                  <FontAwesomeIcon className="print_icon" icon={faPrint} />
+                </td>
               </tr>
             );
           })}

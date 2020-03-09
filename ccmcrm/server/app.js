@@ -36,6 +36,16 @@ app.get("/api/getorder/:id", function(req, res) {
   });
 });
 
+app.get("/api/getordernum", function(req, res) {
+  let sql = `SELECT COUNT(*) AS numer_of_order FROM orders`;
+  db.all(sql, [], (err, row) => {
+    if (err) {
+      throw err;
+    }
+    res.send(row);
+  });
+});
+
 app.post("/api/postorder", function(req, res) {
   let id = req.body.id;
   res.send("Update id" + id);
