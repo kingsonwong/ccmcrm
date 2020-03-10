@@ -14,49 +14,32 @@ class SideBar extends Component {
   render() {
     return (
       <div className="sidebar">
-        <h1 className="sidebar_username">My Name</h1>
         <div className="sidebar_usericon"></div>
         <ul className="navlist">
-          <li>
-            <FontAwesomeIcon
-              className="navlist_icon"
-              icon={faChartLine}
-              size="lg"
-            />
-            <Link className="navlist_link" to="/dashboard">
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <FontAwesomeIcon className="navlist_icon" icon={faTable} />
-            <Link className="navlist_link" to="/records">
-              Records
-            </Link>
-          </li>
-          <li>
-            <FontAwesomeIcon className="navlist_icon" icon={faPen} />
-            <Link className="navlist_link" to="/form">
-              Form
-            </Link>
-          </li>
-          <li>
-            <FontAwesomeIcon className="navlist_icon" icon={faCog} />
-            <Link className="navlist_link" to="/setting">
-              Setting
-            </Link>
-          </li>
-          <li>
-            <FontAwesomeIcon
-              className="navlist_icon"
-              icon={faSignOutAlt}
-              size="lg"
-            />
-            <Link className="navlist_link" to="/login">
-              Signout
-            </Link>
-          </li>
+          <Link className="navlist_link" to="/dashboard">
+            <li className="baritem">
+              <FontAwesomeIcon className="navlist_icon" icon={faChartLine} />
+            </li>
+          </Link>
+          <Link className="navlist_link" to="/records">
+            <li className="baritem">
+              <FontAwesomeIcon className="navlist_icon" icon={faTable} />
+            </li>
+          </Link>
+          <Link className="navlist_link" to="/form">
+            <li className="baritem">
+              <FontAwesomeIcon className="navlist_icon" icon={faPen} />
+            </li>
+          </Link>
+          <Link className="navlist_link" to="/setting">
+            <li className="baritem">
+              <FontAwesomeIcon className="navlist_icon" icon={faCog} />
+            </li>
+          </Link>
         </ul>
-        <p className="copyright">@2019 Cocomall Technology Ltd</p>
+        <Link className="signout_button" to="/login">
+          <FontAwesomeIcon className="navlist_icon" icon={faSignOutAlt} />
+        </Link>
       </div>
     );
   }

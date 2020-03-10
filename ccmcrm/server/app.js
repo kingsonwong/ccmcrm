@@ -15,7 +15,9 @@ let db = new sqlite3.Database("../ccmdb.db", err => {
 });
 
 app.get("/api/getorders/:page", (req, res) => {
-  let sql = `SELECT * FROM orders  LIMIT ${(req.params.page - 1) * 15} , ${15}`;
+  let sql = `SELECT * FROM orders o
+  JOIN staffs s
+  ON o.staff_id = s.staff_id  LIMIT ${(req.params.page - 1) * 15} , ${15}`;
   db.all(sql, [], (err, row) => {
     if (err) {
       throw err;

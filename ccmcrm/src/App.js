@@ -5,6 +5,7 @@ import Dashboard from "./components/dashboard";
 import Records from "./components/records";
 import Forms from "./components/form";
 import Settings from "./components/settings";
+import SubSideBar from "./components/subsidebar";
 
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
@@ -35,6 +36,7 @@ class App extends Component {
           </Route>
         </Switch>
         <Sidebar />
+        <SubSideBar />
       </div>
     );
   }

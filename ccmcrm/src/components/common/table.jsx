@@ -5,32 +5,43 @@ import { faPrint } from "@fortawesome/free-solid-svg-icons";
 class Table extends Component {
   state = {};
   render() {
-    const { columnNames, orders } = this.props;
+    const { columnNames, orders, onRowExpand } = this.props;
     return (
-      <table class="table">
-        <thead>
-          <tr>
-            {columnNames.map(colname => {
-              return <th scope="col">{colname}</th>;
+      <table class="ordertable">
+        <thead class="ordertable-head">
+          <tr class="ordertable-headrow">
+            {columnNames.map(col => {
+              return (
+                <th scope="col" class="ordertable-headcell">
+                  {col.Icon}
+                  {col.colname}
+                </th>
+              );
             })}
           </tr>
         </thead>
-        <tbody>
+        <tbody class="ordertable-body">
           {orders.map(order => {
             return (
-              <tr>
-                <td>{order.record_date}</td>
-                <td>{order.ccm_invoice_no}</td>
-                <td>{order.case_id}</td>
-                <td>{order.is_complete}</td>
-                <td>XXX</td>
-                <td>{order.cash_received_date}</td>
-                <td>{order.cash_paid_date}</td>
-                <td>{order.delivered_date}</td>
-                <td>
-                  <FontAwesomeIcon className="print_icon" icon={faPrint} />
-                </td>
-              </tr>
+              <React.Fragment>
+                <tr
+                  class="ordertable-bodyrow"
+                  onClick={() => onRowExpand(order)}
+                >
+                  <td>{order.record_date}</td>
+                  <td>{order.staff_name}</td>
+                  <td>{order.ccm_invoice_no}</td>
+                  <td>{order.case_id}</td>
+                  <td>$1,000</td>
+                </tr>
+                <div
+                  className={
+                    order.expandDisplay
+                      ? "tablerow_extrainfo_show"
+                      : "tablerow_extrainfo"
+                  }
+                ></div>
+              </React.Fragment>
             );
           })}
         </tbody>
