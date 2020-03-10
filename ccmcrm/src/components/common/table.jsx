@@ -34,13 +34,19 @@ class Table extends Component {
                   <td>{order.case_id}</td>
                   <td>$1,000</td>
                 </tr>
-                <div
-                  className={
-                    order.expandDisplay
-                      ? "tablerow_extrainfo_show"
-                      : "tablerow_extrainfo"
-                  }
-                ></div>
+                <tr>
+                  <td colspan="5">
+                    <div
+                      className={
+                        order.expandDisplay
+                          ? "tablerow_extrainfo_show"
+                          : "tablerow_extrainfo_close"
+                      }
+                    >
+                      {order.expandDisplay ? "Display Content" : ""}
+                    </div>
+                  </td>
+                </tr>
               </React.Fragment>
             );
           })}

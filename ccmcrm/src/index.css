@@ -226,14 +226,14 @@ table {
   border: none;
 }
 
-.tablerow_extrainfo {
+.tablerow_extrainfo_close {
   width: 100%;
   height: 0rem;
   transition: height 0.3s;
 }
 .tablerow_extrainfo_show {
   width: 100%;
-  height: 15rem;
+  height: 10rem;
   transition: height 0.3s;
 }
 
