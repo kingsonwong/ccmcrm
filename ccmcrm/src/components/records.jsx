@@ -92,7 +92,6 @@ class Records extends Component {
             onRowExpand={this.handleRowExpand}
           />
         </div>
-        <Pagination onPageChange={this.handlePageChange} MaxPages={MaxPages} />
       </div>
     );
   }

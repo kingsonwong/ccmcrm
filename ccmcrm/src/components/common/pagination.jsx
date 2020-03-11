@@ -16,15 +16,7 @@ class Pagination extends Component {
               Previous
             </a>
           </li>
-          {pages.map(i => {
-            return (
-              <li class="page-item page-item_middle">
-                <a class="page-link" onClick={() => onPageChange(i)}>
-                  {i}
-                </a>
-              </li>
-            );
-          })}
+
           <li class="page-item page-item_right">
             <a class="page-link" href="#">
               Next

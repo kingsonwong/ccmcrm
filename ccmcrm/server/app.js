@@ -32,7 +32,7 @@ app.get("/api/getorders/:page", (req, res) => {
       ON o.ccm_invoice_no = op.ccm_invoice_no
         JOIN staffs s
       ON o.staff_id = s.staff_id
-    )  LIMIT ${(req.params.page - 1) * 15} , ${15}`;
+    )`; //  LIMIT ${(req.params.page - 1) * 15} , ${15}`;
   db.all(sql, [], (err, row) => {
     if (err) {
       throw err;

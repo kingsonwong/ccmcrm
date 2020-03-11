@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import InfiniteScroll from "react-infinite-scroller";
 
 class Table extends Component {
   state = {};
@@ -63,7 +64,7 @@ class Table extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="5">
+                  <td colspan={columnNames.length}>
                     <div
                       className={
                         order.expandDisplay
@@ -142,7 +143,7 @@ class Table extends Component {
                         <p className="tablerow_extrainfo_content">
                           {order.expandDisplay ? total_discount : ""}
                         </p>
-                        <p className="tablerow_extrainfo_content">
+                        <p className="tablerow_extrainfo_content breakpointA">
                           {order.expandDisplay ? discount_revenue : ""}
                         </p>
                         <p className="tablerow_extrainfo_content">
@@ -154,13 +155,13 @@ class Table extends Component {
                         <p className="tablerow_extrainfo_content">
                           {order.expandDisplay ? delivery_charge : ""}
                         </p>
-                        <p className="tablerow_extrainfo_content">
+                        <p className="tablerow_extrainfo_content breakpointB">
                           {order.expandDisplay ? profit_before_coupon : ""}
                         </p>
                         <p className="tablerow_extrainfo_content">
                           {order.expandDisplay ? coupon : ""}
                         </p>
-                        <p className="tablerow_extrainfo_content">
+                        <p className="tablerow_extrainfo_content breakpointC">
                           {order.expandDisplay ? net_profit : ""}
                         </p>
                       </div>
