@@ -148,10 +148,21 @@ hr {
   background-color: rgb(255, 255, 255);
 }
 
-.record_title {
-  font-size: 3.2rem;
-  margin-top: 2rem;
+.filter_menu {
+  position: absolute;
+  top: 10rem;
+  left: 8rem;
+  background-color: #f4f4f4;
+  width: 15rem;
+  height: 20rem;
+  overflow: scroll;
+  border-radius: 1rem;
 }
+.filter_menu_option {
+  padding: 1rem;
+  border-bottom: 0.1rem solid #525252;
+}
+
 .control_bar {
   display: flex;
   flex-direction: row;
@@ -187,10 +198,14 @@ table {
 }
 
 .ordertable-headcell {
+  cursor: pointer;
   width: 10rem;
   font-size: 1.2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.ordertable-headcell:hover {
+  background-image: linear-gradient(to bottom, #ffffff, #eeeeee);
 }
 
 .ordertable-bodyrow {

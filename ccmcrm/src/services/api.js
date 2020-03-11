@@ -2,9 +2,12 @@ const axios = require("axios");
 const headers = {
   "Access-Control-Allow-Origin": "https://localhost3000"
 };
-export async function get_orders(page) {
+export async function get_orders(seq, col) {
+  console.log(seq, col);
   try {
-    const res = await axios.get(`http://localhost:3001/api/getorders/${page}`);
+    const res = await axios.get(
+      `http://localhost:3001/api/getorders/${seq}/${col}`
+    );
     return res.data;
   } catch (e) {
     console.log(e);

@@ -6,7 +6,7 @@ import InfiniteScroll from "react-infinite-scroller";
 class Table extends Component {
   state = {};
   render() {
-    const { columnNames, orders, onRowExpand } = this.props;
+    const { columnNames, orders, onRowExpand, onSort } = this.props;
 
     return (
       <table class="ordertable">
@@ -14,7 +14,7 @@ class Table extends Component {
           <tr class="ordertable-headrow">
             {columnNames.map(col => {
               return (
-                <th scope="col" class="ordertable-headcell">
+                <th scope="col" class="ordertable-headcell" onClick={onSort}>
                   {col.Icon}
                   {col.colname}
                 </th>
@@ -52,7 +52,7 @@ class Table extends Component {
                   <td>{order.staff_name}</td>
                   <td>{order.ccm_invoice_no}</td>
                   <td>{order.case_id}</td>
-                  <td>{net_profit}</td>
+                  <td>{order.net_profit}</td>
                   <td className="tablecell_addition">
                     <FontAwesomeIcon className="tablerow_icon" icon={faEdit} />
                   </td>
