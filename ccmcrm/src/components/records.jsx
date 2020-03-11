@@ -34,7 +34,10 @@ class Records extends Component {
       {
         colname: "Net Profit",
         Icon: <FontAwesomeIcon className="tableicon" icon={faDollarSign} />
-      }
+      },
+      { colname: "Edit", Icon: "" },
+      { colname: "Print", Icon: "" },
+      { colname: "Delete", Icon: "" }
     ],
     orders: [],
     MaxPages: 0,
@@ -60,7 +63,6 @@ class Records extends Component {
     var index = orders.indexOf(order);
     orders[index].expandDisplay = !orders[index].expandDisplay;
     if (index !== lastExpandIndex && !lastExpandIndex) {
-      console.log("logic execute");
       orders[lastExpandIndex].expandDisplay = false;
       lastExpandIndex = index;
     }
@@ -69,8 +71,6 @@ class Records extends Component {
 
   handlePageChange = i => {
     const { currentPage } = this.state;
-
-    console.log("change", i);
   };
 
   render() {
