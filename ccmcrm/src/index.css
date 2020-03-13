@@ -158,9 +158,22 @@ hr {
   overflow: scroll;
   border-radius: 1rem;
 }
+.filter_menu_options_list {
+  margin-top: 0.5rem;
+}
+.filter_menu_options_list:first-child {
+  border-top: 0.1rem solid #cbcbcb;
+}
+
 .filter_menu_option {
   padding: 1rem;
-  border-bottom: 0.1rem solid #525252;
+  border-bottom: 0.1rem solid #cbcbcb;
+}
+
+.filter_menu_option:hover {
+  box-shadow: 0rem 0rem 1rem rgb(150, 150, 150);
+  padding: 1rem;
+  border-bottom: 0.1rem solid rgb(150, 150, 150);
 }
 
 .control_bar {
