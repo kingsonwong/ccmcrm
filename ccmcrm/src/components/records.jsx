@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Table from "./common/table";
 import Filter from "./common/filter";
-import { get_orders, get_num_orders } from "../services/api";
+import { getOrders } from "../services/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarDay,
@@ -61,14 +61,13 @@ class Records extends Component {
       currentSortColumn,
       currentSortSeq
     } = this.state;
-    const new_num_order = await get_num_orders();
-    const max_pages = Math.ceil(new_num_order / ordersPerPage);
-    let new_orders = await get_orders(currentSortSeq, currentSortColumn);
+
+    let new_orders = await getOrders(currentSortSeq, currentSortColumn);
     new_orders = new_orders.map(i => {
       return { ...i, expandDisplay: false };
     });
     console.log(new_orders);
-    this.setState({ orders: new_orders, MaxPages: max_pages });
+    this.setState({ orders: new_orders });
   };
 
   handleRowExpand = order => {
@@ -106,7 +105,7 @@ class Records extends Component {
     }
     currentSortColumn = selected_column_id;
 
-    let new_orders = await get_orders(currentSortSeq, selected_column_id);
+    let new_orders = await getOrders(currentSortSeq, selected_column_id);
     this.setState({
       orders: new_orders,
       currentSortColumn: currentSortColumn,
@@ -123,8 +122,6 @@ class Records extends Component {
     } = this.state;
     return (
       <div className="right_hand_side">
-        <Filter />
-
         <hr />
         <div className="control_bar">
           <p className="display_count">324 orders</p>

@@ -2,22 +2,13 @@ const axios = require("axios");
 const headers = {
   "Access-Control-Allow-Origin": "https://localhost3000"
 };
-export async function get_orders(seq, col) {
-  console.log(seq, col);
-  try {
-    const res = await axios.get(
-      `http://localhost:3001/api/getorders/${seq}/${col}`
-    );
-    return res.data;
-  } catch (e) {
-    console.log(e);
-  }
-}
+const endpoint = "http://localhost:3001";
 
-export async function get_num_orders(page) {
+export async function getOrders(seq, col) {
   try {
-    const res = await axios.get(`http://localhost:3001/api/getordernum`);
-    return res.data[0].numer_of_order;
+    const res = await axios.get(`${endpoint}/api/orders/${seq}/${col}`);
+    console.log(res.data);
+    return res.data;
   } catch (e) {
     console.log(e);
   }

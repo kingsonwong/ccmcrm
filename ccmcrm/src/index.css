@@ -26,11 +26,89 @@ body,
   flex-direction: row;
   height: 100%;
 }
+.login_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.loginform {
+  background-color: #d3d2d2;
+  width: 60rem;
+  height: 45rem;
+  border-radius: 2rem;
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  padding: 6rem;
+  flex-direction: column;
+}
+.logintitle {
+  font-size: 3.2rem;
+  font-weight: 600;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.loginform_user-icon {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
 
 hr {
   width: 100%;
   border: 1px solid rgba(230, 230, 230, 0.66);
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.loginhr {
+  border: 1px solid rgba(108, 108, 108, 0.66);
+}
+.loginform_fields {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.form-group > label {
+  font-size: 1.6rem;
+}
+.form-group > input {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  border: 0.1rem solid rgb(201, 201, 201);
+}
+.form-group > input:focus {
+  outline: none;
+  box-shadow: 0rem 0rem 1rem rgba(52, 52, 52, 0.475);
+}
+
+.login_button {
+  background-image: linear-gradient(to right, rgb(0, 0, 0), #000000d8);
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  width: 15rem;
+  height: 4rem;
+  margin-top: 4rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #000000;
+}
+.login_button:hover {
+  box-shadow: 0rem 0rem 2rem rgba(52, 52, 52, 0.475);
+}
+.login_button:active {
+  box-shadow: 0rem 0rem 2rem rgba(52, 52, 52, 0.475);
+  background-image: linear-gradient(to right, rgb(65, 65, 65), rgb(65, 65, 65));
+  border: 0.1rem solid rgb(65, 65, 65);
+}
+
+.login_button:focus {
+  outline: none;
 }
 
 .right_hand_side {
