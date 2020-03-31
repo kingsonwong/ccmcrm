@@ -1,0 +1,41 @@
+html,
+body,
+#root {
+  height: 100%;
+  font-size: 12px;
+  display: flex;
+  width: 100%;
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 33rem;
+  padding: 1.5rem;
+  margin: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 10rem;
+}
+
+.control-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+
+.addnew {
+  position: absolute;
+  right: 0;
+}
+
+.modal {
+  overflow-y: scroll;
+}
