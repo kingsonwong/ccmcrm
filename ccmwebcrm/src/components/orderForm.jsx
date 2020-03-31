@@ -6,13 +6,47 @@ import FormPartB from "./formPartB";
 import FormPartC from "./formPartC";
 import FormPartD from "./formPartD";
 import ProductCard from "./common/productCard";
+import ProductCardColumn from "./common/productCardColumn";
 import FormSession from "./common/formSession";
 
 class OrderForm extends Form {
-  state = {};
+  state = {
+    order: {
+      orderInfo: [],
+      basicInfo: [],
+      productLists: []
+    }
+  };
+  handleInput = e => {
+    let order = { ...this.state.order };
+
+    let selectedProduct = order.productLists[e.currentTarget.id];
+    selectedProduct[e.currentTarget.name] = e.currentTarget.value;
+
+    this.setState({ order });
+  };
+
+  handleAddProduct = e => {
+    let order = { ...this.state.order };
+    let obj = {
+      id: order.productLists.length,
+      brandName: "",
+      productDescription: "",
+      modelNo: "",
+      unitprice: 0,
+      unitcost: 0,
+      discount: 0,
+      deliveryCost: 0,
+      qty: 0
+    };
+    order.productLists.push(obj);
+    this.setState({ order });
+  };
+
   render() {
     const staffLists = ["Jim", "Eiji", "Ivy", "Shan"];
     const productCategory = ["foo", "lapp", "momo", "dodo"];
+    let order = { ...this.state.order };
     return (
       <form class="container mt-3">
         <DropDownLabelPair
@@ -35,49 +69,22 @@ class OrderForm extends Form {
         <div class="row">
           <div className="col">
             <div className="product-control">
-              <button type="button" class="btn btn-primary">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={this.handleAddProduct}
+              >
                 Add Product
               </button>
             </div>
           </div>
         </div>
-
-        <div class="row mt-4">
-          <div className="col-sm-2 pr-0 product-item-title">Brand</div>
-          <div className="col-sm-4 pr-0 pl-0 product-item-title">
-            Product Description
-          </div>
-          <div className="col-sm-2 pl-0 product-item-title">Model No.</div>
-          <input
-            className="specialInput"
-            type="text"
-            placeholder="Price"
-            disabled
-          />
-          <input
-            className="specialInput"
-            type="text"
-            placeholder="Cost"
-            disabled
-          />
-          <input
-            className="specialInput"
-            type="text"
-            placeholder="Discount"
-            disabled
-          />
-          <input
-            className="specialInput"
-            type="text"
-            placeholder="Delivery"
-            disabled
-          />
-        </div>
-
-        <ProductCard
-          onChange={this.handleInput}
-          productCategory={productCategory}
-        />
+        <ProductCardColumn />
+        {order.productLists.map(product => {
+          return (
+            <ProductCard cardid={product.id} onChange={this.handleInput} />
+          );
+        })}
       </form>
     );
   }

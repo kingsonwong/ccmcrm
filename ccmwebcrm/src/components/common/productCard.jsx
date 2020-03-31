@@ -1,8 +1,7 @@
 import React from "react";
 import Input from "./input";
-import DropDown from "./dropdown";
 
-const ProductCard = ({ onChange, productCategory }) => {
+const ProductCard = ({ cardid, onChange }) => {
   return (
     <div class="card row mt-2">
       <div class="card-body">
@@ -10,7 +9,8 @@ const ProductCard = ({ onChange, productCategory }) => {
           <div className="col-sm-2 pr-0">
             <Input
               type="text"
-              id="brandName"
+              id={cardid}
+              name="brandName"
               class="form-control"
               placeholder="brand"
               required=""
@@ -18,12 +18,13 @@ const ProductCard = ({ onChange, productCategory }) => {
               onChange={onChange}
             />
           </div>
-          <div className="col-sm-4 pr-0 pl-0">
+          <div className="col-sm-3 pr-0 pl-0">
             <Input
               type="text"
-              id="productDescription"
+              id={cardid}
+              name="productDescription"
               class="form-control"
-              placeholder="product description "
+              placeholder="Product Description "
               required=""
               autofocus=""
               onChange={onChange}
@@ -31,8 +32,9 @@ const ProductCard = ({ onChange, productCategory }) => {
           </div>
           <div className="col-sm-2 pl-0">
             <Input
+              id={cardid}
               type="text"
-              id="modelNo"
+              name="modelNo"
               class="form-control"
               placeholder="Model No."
               required=""
@@ -40,10 +42,46 @@ const ProductCard = ({ onChange, productCategory }) => {
               onChange={onChange}
             />
           </div>
-          <input className="specialInput" type="text" placeholder="$" />
-          <input className="specialInput" type="text" placeholder="$" />
-          <input className="specialInput" type="text" placeholder="$" />
-          <input className="specialInput" type="text" placeholder="$" />
+          <input
+            id={cardid}
+            className="specialInput"
+            name="price"
+            type="text"
+            placeholder="$"
+            onChange={onChange}
+          />
+          <input
+            id={cardid}
+            className="specialInput"
+            name="cost"
+            type="text"
+            placeholder="$"
+            onChange={onChange}
+          />
+          <input
+            id={cardid}
+            className="specialInput"
+            name="discount"
+            type="text"
+            placeholder="$"
+            onChange={onChange}
+          />
+          <input
+            id={cardid}
+            className="specialInput"
+            name="deliveryCost"
+            type="text"
+            placeholder="$"
+            onChange={onChange}
+          />
+          <input
+            id={cardid}
+            className="specialInput"
+            name="qty"
+            type="number"
+            placeholder="0"
+            onChange={onChange}
+          />
         </div>
       </div>
     </div>
