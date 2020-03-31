@@ -39,3 +39,10 @@ body,
 .modal {
   overflow-y: scroll;
 }
+
+.specialInput {
+  width: 8%;
+}
+.product-item-title {
+  text-align: center;
+}

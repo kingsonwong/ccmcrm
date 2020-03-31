@@ -47,7 +47,7 @@ const formPartC = ({ onChange }) => {
         <InputLabelPair
           labelWidth="4"
           inputWidth="8"
-          labelName="Customer Name"
+          labelName="Customer Phone"
           placeHolder="Customer Phone No."
           id="customerPhone"
           type="text"
@@ -56,7 +56,7 @@ const formPartC = ({ onChange }) => {
         <InputLabelPair
           labelWidth="4"
           inputWidth="8"
-          labelName="Customer Living Address"
+          labelName="Customer Address"
           placeHolder="Customer Living Address"
           id="customerAddress"
           type="text"
