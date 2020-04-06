@@ -46,3 +46,9 @@ body,
 .product-item-title {
   text-align: center;
 }
+
+.close-product-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

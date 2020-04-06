@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "./common/form";
 import DropDownLabelPair from "./common/dropdownLabelPair";
+import Button from "./common/button";
 import FormPartA from "./formPartA";
 import FormPartB from "./formPartB";
 import FormPartC from "./formPartC";
@@ -9,7 +10,7 @@ import ProductCard from "./common/productCard";
 import ProductCardColumn from "./common/productCardColumn";
 import FormSession from "./common/formSession";
 
-class OrderForm extends Form {
+class OrderForm extends Component {
   state = {
     order: {
       orderInfo: [],
@@ -19,8 +20,8 @@ class OrderForm extends Form {
   };
   handleInput = e => {
     let order = { ...this.state.order };
-
-    let selectedProduct = order.productLists[e.currentTarget.id];
+    const index = e.currentTarget.id - 1;
+    let selectedProduct = order.productLists[index];
     selectedProduct[e.currentTarget.name] = e.currentTarget.value;
 
     this.setState({ order });
@@ -29,7 +30,6 @@ class OrderForm extends Form {
   handleAddProduct = e => {
     let order = { ...this.state.order };
     let obj = {
-      id: order.productLists.length,
       brandName: "",
       productDescription: "",
       modelNo: "",
@@ -40,6 +40,14 @@ class OrderForm extends Form {
       qty: 0
     };
     order.productLists.push(obj);
+    this.setState({ order });
+  };
+
+  handleDeleteProduct = e => {
+    let order = { ...this.state.order };
+    const index = e.currentTarget.id - 1;
+    console.log(index + " index was deleted.");
+    order.productLists.splice(index, 1);
     this.setState({ order });
   };
 
@@ -65,26 +73,17 @@ class OrderForm extends Form {
         <div class="row">
           <FormPartC onChange={this.handleInput} />
         </div>
-        <FormSession title="Products" />
-        <div class="row">
-          <div className="col">
-            <div className="product-control">
-              <button
-                type="button"
-                class="btn btn-primary"
-                onClick={this.handleAddProduct}
-              >
-                Add Product
-              </button>
-            </div>
-          </div>
-        </div>
-        <ProductCardColumn />
-        {order.productLists.map(product => {
-          return (
-            <ProductCard cardid={product.id} onChange={this.handleInput} />
-          );
-        })}
+        <FormSession title="Products">
+          <span class="badge badge-secondary ml-2 mr-2">
+            {order.productLists.length}
+          </span>
+        </FormSession>
+        <FormPartD
+          addProduct={this.handleAddProduct}
+          order={order}
+          handleInput={this.handleInput}
+          deleteProduct={this.deleteProduct}
+        />
       </form>
     );
   }

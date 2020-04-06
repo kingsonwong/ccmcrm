@@ -1,5 +1,6 @@
 import React from "react";
 import InputLabelPair from "./common/inputLabelPair";
+import InputLabelPairWithDollar from "./common/inputLabelPairWithDollar";
 
 const formPartC = ({ onChange }) => {
   return (
@@ -30,6 +31,31 @@ const formPartC = ({ onChange }) => {
           labelName="Order Id"
           placeHolder="Order ID"
           id="orderid"
+          type="text"
+          onChange={onChange}
+        />
+        <hr />
+        <InputLabelPairWithDollar
+          labelWidth="6"
+          inputWidth="6"
+          labelName="OneOff Delivery Charge"
+          id="oneOddDeliveryCharge"
+          type="text"
+          onChange={onChange}
+        />
+        <InputLabelPairWithDollar
+          labelWidth="6"
+          inputWidth="6"
+          labelName="OneOff Delivery Cost"
+          id="oneOddDeliveryCost"
+          type="text"
+          onChange={onChange}
+        />
+        <InputLabelPairWithDollar
+          labelWidth="6"
+          inputWidth="6"
+          labelName="Coupon Amount Used"
+          id="couponUsed"
           type="text"
           onChange={onChange}
         />

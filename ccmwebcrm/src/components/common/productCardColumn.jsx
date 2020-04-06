@@ -3,10 +3,12 @@ import React from "react";
 const ProductCardColumn = () => {
   return (
     <div class="row mt-4">
-      <div className="col-sm-2 pr-0 product-item-title">Brand</div>
+      <div className="col-sm-1 pr-0 pl-0"></div>
       <div className="col-sm-3 pr-0 pl-0 product-item-title">
         Product Description
       </div>
+      <div className="col-sm-1 pr-0 pl-0 product-item-title">Brand</div>
+
       <div className="col-sm-2 pl-0 product-item-title">Model No.</div>
       <input
         className="specialInput"

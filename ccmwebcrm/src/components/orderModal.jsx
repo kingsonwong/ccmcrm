@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import OrderForm from "./orderForm";
+import Button from "./common/button";
 
 class OrderModal extends Component {
   state = {
@@ -25,30 +26,30 @@ class OrderModal extends Component {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">{this.state.formConfig.title}</h5>
-              <button
+              <Button
                 type="button"
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </Button>
             </div>
             <div class="modal-body">
               <OrderForm />
             </div>
 
             <div class="modal-footer">
-              <button
+              <Button
                 type="button"
                 class="btn btn-secondary"
                 data-dismiss="modal"
               >
                 {this.state.formConfig.closeButton}
-              </button>
-              <button type="button" class="btn btn-primary">
+              </Button>
+              <Button type="button" class="btn btn-primary">
                 {this.state.formConfig.saveButton}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
