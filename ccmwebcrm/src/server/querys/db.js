@@ -7,9 +7,10 @@ var db = new sqlite3.Database("ccmdb.db", (err) => {
   console.log("Connected to the cocomall database.");
 });
 
-async function sendQuery(sql) {
+async function getQuery(sql, params) {
   const result = await new Promise((resolve, reject) => {
-    db.all(sql, [], (err, row) => {
+    var param = params ? params : [];
+    db.all(sql, param, (err, row) => {
       if (err) reject(err);
       resolve(row);
     });
@@ -18,7 +19,7 @@ async function sendQuery(sql) {
   return result;
 }
 
-async function insertData(sql, orderObj) {
+async function insertQuery(sql, orderObj) {
   const result = await new Promise((resolve, reject) => {
     db.run(sql, Object.values(orderObj), (err, row) => {
       if (err) {
@@ -42,6 +43,6 @@ async function deleteQuery(sql, id) {
   return result;
 }
 
-exports.sendQuery = sendQuery;
-exports.insertData = insertData;
+exports.getQuery = getQuery;
+exports.insertQuery = insertQuery;
 exports.deleteQuery = deleteQuery;
