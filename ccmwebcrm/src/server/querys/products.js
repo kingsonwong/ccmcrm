@@ -5,3 +5,7 @@ exports.getProductsOfSingleOrder = function getProductsOfSingleOrder() {
 exports.getProductsOfAllOrder = function getProductsOfAllOrder() {
   return `SELECT * from orders_products`;
 };
+
+exports.insertProductsToOrder = function insertProductsToOrder() {
+    return `SELECT * from orders_products`;
+  };
