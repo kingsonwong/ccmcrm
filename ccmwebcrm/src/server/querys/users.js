@@ -6,6 +6,6 @@ exports.getSingleUser = function getSingleUser() {
   return `SELECT * FROM staffs WHERE username = ?`;
 };
 
-exports.updateSingleUser = function updateSingleUser() {
+exports.updateSingleUserPassword = function updateSingleUserPassword() {
   return `UPDATE staffs SET password = ? WHERE username = ?`;
 };

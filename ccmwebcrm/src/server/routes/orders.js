@@ -1,13 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const dbQuery = require("../querys/db");
 const ordersQuery = require("../querys/orders.js");
+const router = express.Router();
 
 //Read all orders
 router.get("/", async (req, res) => {
   const query = ordersQuery.getAllOrders();
   try {
-    const result = await dbQuery.getQuery(query);
+    const result = await dbQuery.sendQuery(query);
     console.log(result);
     res.send(result);
   } catch {
@@ -17,9 +17,9 @@ router.get("/", async (req, res) => {
 
 //Read a single order given an id
 router.get("/:id", async (req, res) => {
-  const query = ordersQuery.getSingleOrders(req.params.id);
+  const query = ordersQuery.getSingleOrders();
   try {
-    const result = await dbQuery.getQuery(query);
+    const result = await dbQuery.sendQuery(query, [req.params.id]);
     console.log(result);
     res.send(result);
   } catch {
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const query = ordersQuery.postSingleOrder(req.body);
   try {
-    const result = await dbQuery.insertQuery(query, req.body);
+    const result = await dbQuery.sendQuery(query, Object.values(req.body));
     res.send("Success.");
   } catch (ex) {
     console.log(ex);
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const query = ordersQuery.deleteSingleOrder();
   try {
-    const result = await dbQuery.deleteQuery(query, req.params.id);
+    const result = await dbQuery.sendQuery(query, [req.params.id]);
     res.send("Delete");
   } catch {
     console.log("Error");

@@ -1,38 +1,39 @@
 const express = require("express");
-const router = express.Router();
 const dbQuery = require("../querys/db");
 const usersQuery = require("../querys/users.js");
+const router = express.Router();
 
-//Read all orders
+//Read all users
 router.get("/", async (req, res) => {
   const query = usersQuery.getAllUsers();
   try {
-    const result = await dbQuery.getQuery(query);
-    console.log(result);
+    const result = await dbQuery.sendQuery(query);
     res.send(result);
   } catch {
     console.log("Error");
   }
 });
 
-//Read a single order given an id
+//Read a single user given an id
 router.get("/:id", async (req, res) => {
   const query = usersQuery.getSingleUser();
   try {
-    const result = await dbQuery.getQuery(query, req.params.id);
-    console.log(result);
+    const result = await dbQuery.sendQuery(query, [req.params.id]);
     res.send(result);
   } catch {
     console.log("Error");
   }
 });
 
-//Delete a single order with id
-router.delete("/:id", async (req, res) => {
-  const query = usersQuery.updateSingleUser();
+//update a single user password
+router.put("/:id", async (req, res) => {
+  const query = usersQuery.updateSingleUserPassword();
   try {
-    const result = await dbQuery.getQuery(query, req.params.id);
-    res.send("Delete");
+    const result = await dbQuery.sendQuery(query, [
+      req.headers.password,
+      req.params.id,
+    ]);
+    res.send("Password Update");
   } catch {
     console.log("Error");
   }
