@@ -32,7 +32,18 @@ router.post("/", async (req, res) => {
   const query = ordersQuery.postSingleOrder(req.body);
   try {
     const result = await dbQuery.sendQuery(query, Object.values(req.body));
-    res.send("Success.");
+    res.send("Create new order Success.");
+  } catch (ex) {
+    console.log(ex);
+  }
+});
+
+//Update a single order with id
+router.put("/:id", async (req, res) => {
+  const query = ordersQuery.updateSingleOrder(req.params.id);
+  try {
+    const result = await dbQuery.sendQuery(query, Object.values(req.body));
+    res.send("Update Success.");
   } catch (ex) {
     console.log(ex);
   }
@@ -43,7 +54,7 @@ router.delete("/:id", async (req, res) => {
   const query = ordersQuery.deleteSingleOrder();
   try {
     const result = await dbQuery.sendQuery(query, [req.params.id]);
-    res.send("Delete");
+    res.send("Delete order Success");
   } catch {
     console.log("Error");
   }

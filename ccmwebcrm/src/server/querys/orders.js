@@ -62,6 +62,32 @@ exports.postSingleOrder = function postSingleOrder(orderObj) {
   `;
 };
 
+exports.updateSingleOrder = function updateSingleOrder(id) {
+  console.log(id);
+  return `
+  UPDATE orders SET 
+  ccm_invoice_no = ?,
+  record_date = ?,
+  ccm_invoice_date = ?,
+  remark = ?,
+  is_complete = ?,
+  cash_received_date = ?,
+  cash_paid_date = ?,
+  delivered_date = ?,
+  staff_id = ?,
+  case_id = ?,
+  supplier_invoice_ref_no = ?,
+  supplier_purchase_order_ref_no = ?,
+  supplier_id = ?,
+  customer_id = ?,
+  one_off_marketing_coupon_amount = ?,
+  one_off_delivery_charge = ?,
+  one_off_delivery_cost = ?,
+  one_off_custom_discount = ?
+  WHERE ccm_invoice_no = "${id}"
+  `;
+};
+
 exports.deleteSingleOrder = function deleteSingleOrder() {
   return `DELETE from orders WHERE ccm_invoice_no = ?`;
 };
