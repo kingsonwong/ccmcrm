@@ -1,6 +1,7 @@
 const express = require("express");
 const dbQuery = require("../querys/db");
 const usersQuery = require("../querys/users.js");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 //Read all users
@@ -14,14 +15,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Read a single user given an id
-router.get("/:id", async (req, res) => {
+//Login
+router.post("/login", async (req, res) => {
   const query = usersQuery.getSingleUser();
   try {
-    const result = await dbQuery.sendQuery(query, [req.params.id]);
-    res.send(result);
+    const result = await dbQuery.sendQuery(query, [req.body.username]);
+    const userPassword = result[0].password;
+    if (userPassword === req.body.password) {
+      var token = jwt.sign(
+        { username: req.body.username, password: req.body.password },
+        "privatekey"
+      );
+      res.send(token);
+    } else {
+      res.send("password incorrect");
+    }
   } catch {
-    console.log("Error");
+    res.send("username incorrect");
   }
 });
 
