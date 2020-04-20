@@ -5,6 +5,7 @@ async function getAllOrders() {
   try {
     const response = await axios.get(url + "/orders/");
     const allOrders = response.data;
+    console.log(allOrders);
     return allOrders;
   } catch (error) {
     console.log(error);

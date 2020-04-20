@@ -7,12 +7,13 @@ class OrderModal extends Component {
     formConfig: {
       title: "Order Form",
       closeButton: "Close",
-      saveButton: "Save"
-    }
+      saveButton: "Save",
+    },
   };
   render() {
     return (
       <div
+        id="orderModal"
         class="modal fade bd-example-modal-lg"
         tabindex="-1"
         role="dialog"

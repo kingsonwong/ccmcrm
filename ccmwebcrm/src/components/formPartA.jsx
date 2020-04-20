@@ -2,7 +2,7 @@ import React from "react";
 import CheckBox from "./common/checkBox";
 import InputLabelPair from "./common/inputLabelPair";
 
-const FormPartA = ({ onChange }) => {
+const FormPartA = ({ order, onChange }) => {
   return (
     <div class="col-md-6 partA ">
       <InputLabelPair
@@ -11,6 +11,7 @@ const FormPartA = ({ onChange }) => {
         labelName="CCM Invoice ID"
         placeHolder="CCM Invoice ID"
         id="invoiceId"
+        value={order.orderInfo}
         type="text"
         onChange={onChange}
       />
@@ -20,6 +21,7 @@ const FormPartA = ({ onChange }) => {
         labelName="CCM Invoice Date"
         placeHolder="dd/mm/yy"
         id="invoiceDate"
+        value={order.orderInfo}
         type="date"
         onChange={onChange}
       />
@@ -29,13 +31,18 @@ const FormPartA = ({ onChange }) => {
         labelName="My Remark"
         placeHolder="My Remark"
         id="remark"
+        value={order.orderInfo}
         type="text"
         onChange={onChange}
       />
       <div class="row">
         <div class="col-md-12">
-          <CheckBox id="audited" label="Audited" />
-          <CheckBox id="completed" label="Order Completed and Close File" />
+          <CheckBox id="audited" label="Audited" value={order.orderInfo} />
+          <CheckBox
+            id="completed"
+            label="Order Completed and Close File"
+            value={order.orderInfo}
+          />
         </div>
       </div>
     </div>

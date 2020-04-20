@@ -5,10 +5,11 @@ import Tbody from "./tbody";
 class Table extends Component {
   state = {};
   render() {
+    const { data, handleRowSelected } = this.props;
     return (
       <table class="table table-sm">
         <Thead />
-        <Tbody />
+        <Tbody data={data} handleRowSelected={handleRowSelected} />
       </table>
     );
   }

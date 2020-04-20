@@ -15,10 +15,10 @@ class OrderForm extends Component {
     order: {
       orderInfo: [],
       basicInfo: [],
-      productLists: []
-    }
+      productLists: [],
+    },
   };
-  handleInput = e => {
+  handleInput = (e) => {
     let order = { ...this.state.order };
     const index = e.currentTarget.id - 1;
     let selectedProduct = order.productLists[index];
@@ -27,7 +27,7 @@ class OrderForm extends Component {
     this.setState({ order });
   };
 
-  handleAddProduct = e => {
+  handleAddProduct = (e) => {
     let order = { ...this.state.order };
     let obj = {
       brandName: "",
@@ -37,13 +37,13 @@ class OrderForm extends Component {
       unitcost: 0,
       discount: 0,
       deliveryCost: 0,
-      qty: 0
+      qty: 0,
     };
     order.productLists.push(obj);
     this.setState({ order });
   };
 
-  handleDeleteProduct = e => {
+  handleDeleteProduct = (e) => {
     let order = { ...this.state.order };
     const index = e.currentTarget.id - 1;
     console.log(index + " index was deleted.");
@@ -66,12 +66,12 @@ class OrderForm extends Component {
         />
         <FormSession title="Order Information" />
         <div class="row">
-          <FormPartA onChange={this.handleInput} />
-          <FormPartB onChange={this.handleInput} />
+          <FormPartA order={order} onChange={this.handleInput} />
+          <FormPartB order={order} onChange={this.handleInput} />
         </div>
         <FormSession title="Basic Information" />
         <div class="row">
-          <FormPartC onChange={this.handleInput} />
+          <FormPartC order={order} onChange={this.handleInput} />
         </div>
         <FormSession title="Products">
           <span class="badge badge-secondary ml-2 mr-2">

@@ -1,7 +1,7 @@
 import React from "react";
 import InputLabelPair from "./common/inputLabelPair";
 
-const FormPartB = ({ onChange }) => {
+const FormPartB = ({ order, onChange }) => {
   return (
     <div class="col-md-6">
       <InputLabelPair

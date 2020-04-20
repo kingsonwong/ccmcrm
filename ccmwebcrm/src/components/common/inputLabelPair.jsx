@@ -8,7 +8,7 @@ const InputLabelPair = ({
   placeHolder,
   id,
   type,
-  onChange
+  onChange,
 }) => {
   const labelClass = `col-sm-${labelWidth} col-form-label`;
   const inputClass = `col-sm-${inputWidth}`;
@@ -21,7 +21,7 @@ const InputLabelPair = ({
         <Input
           type={type}
           id={id}
-          class="form-control mb-3"
+          class={`form-control mb-3 ${id}`}
           placeholder={placeHolder}
           required=""
           autofocus=""

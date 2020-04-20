@@ -2,7 +2,7 @@ import React from "react";
 import InputLabelPair from "./common/inputLabelPair";
 import InputLabelPairWithDollar from "./common/inputLabelPairWithDollar";
 
-const formPartC = ({ onChange }) => {
+const formPartC = ({ order, onChange }) => {
   return (
     <React.Fragment>
       <div class="col-md-6">
